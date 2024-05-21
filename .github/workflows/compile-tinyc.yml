@@ -1,0 +1,28 @@
+name: Compile TinyC
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: sudo apt-get install -y gcc make
+
+    - name: Compile TinyC as shared library
+      run: |
+        gcc -shared -o libtcc.so tcc.c
+
+    - name: Upload compiled library
+      uses: actions/upload-artifact@v2
+      with:
+        name: libtcc
+        path: libtcc.so
