@@ -21,10 +21,10 @@ jobs:
       run: ./configure
 
     - name: Compile TinyC as shared library
-      run: make lib.tcc
+      run: make libtcc.so
 
     - name: Upload compiled library
       uses: actions/upload-artifact@v2
       with:
         name: libtcc
-        path: lib.tcc
+        path: libtcc.so
