@@ -27,4 +27,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: libtcc
-        path: libtcc.so
+        path: lib.tcc
