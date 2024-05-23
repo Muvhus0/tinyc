@@ -17,9 +17,11 @@ jobs:
     - name: Install dependencies
       run: sudo apt-get install -y gcc make
 
+    - name: Configure TinyC
+      run: ./configure
+
     - name: Compile TinyC as shared library
-      run: |
-        gcc -shared -o libtcc.so tcc.c
+      run: make libtcc.so
 
     - name: Upload compiled library
       uses: actions/upload-artifact@v2
